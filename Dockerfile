@@ -20,7 +20,6 @@ RUN bazel --version
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/CodeIntelligenceTesting/cifuzz/main/install.sh)"
 
 # Copying local directories and files instead of cloning from a repo
-RUN mkdir PasswordStrength
 COPY . /PasswordStrength
 
 RUN ls -a

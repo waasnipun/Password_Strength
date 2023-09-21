@@ -14,6 +14,5 @@ FUZZ_TEST(const uint8_t *data, size_t size) {
   FuzzedDataProvider fuzzed_data(data, size);
   std::string my_string = fuzzed_data.ConsumeRandomLengthString();
 
-  cout << "GENERATE PASSSSS" << my_string << endl;
   string result = passchecker(my_string);
 }

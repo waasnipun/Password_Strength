@@ -1,0 +1,17 @@
+name: PassStrength Workflow - Nipun Waas
+run-name: ${{ github.actor }} is testing out cifuzz CI/CD 🚀
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
+        run: |
+          docker build . --file Dockerfile --tag cifuzz-docker-image
+      - name: Run Docker Container
+        run: docker run cifuzz-docker-image

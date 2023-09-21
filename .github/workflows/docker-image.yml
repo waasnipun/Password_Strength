@@ -25,10 +25,7 @@ jobs:
             echo "Container is still running, waiting..."
             sleep 10
           done
-      - name: Copy logs from container
-        run: |
-          container_id="${{ steps.container.outputs.container_id }}"
-          docker cp $container_id:/PasswordStrength/fuzzing.log ./logs/
+      - run: docker ps -a
       - name: Create GitHub Artifact
         uses: actions/upload-artifact@v2
         with:

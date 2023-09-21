@@ -4,7 +4,7 @@
 ## The build system used to build this project. If not set, cifuzz tries
 ## to detect the build system automatically.
 ## Valid values: "bazel", "cmake", "maven", "gradle", "other".
-build-system: bazel
+build-system: cmake
 
 ## If the build system type is "other", this command is used by
 ## `cifuzz run` to build the fuzz test.
@@ -26,7 +26,7 @@ build-system: bazel
 # - -rss_limit_mb=4096
 
 ## Maximum time to run fuzz tests. The default is to run indefinitely.
-timeout: 3m
+timeout: 5m
 
 ## By default, fuzz tests are executed in a sandbox to prevent accidental
 ## damage to the system. Set to false to run fuzz tests unsandboxed.

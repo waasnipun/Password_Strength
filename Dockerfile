@@ -25,4 +25,4 @@ WORKDIR /PasswordStrength
 
 RUN ls -a
 
-CMD ["sh", "-c", "cifuzz run test -v --use-sandbox=false"]
+CMD ["sh", "-c", "cifuzz run test:test -v --use-sandbox=false"]

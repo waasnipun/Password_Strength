@@ -28,8 +28,8 @@ string passchecker(string& password) {
     }
 
     // Check for consecutive characters (e.g., "123" or "abc")
-    std::regex consecutivePattern(R"((\w)\1\1)");
-    if (std::regex_search(password, consecutivePattern)) {
+    std::regex consecutivePattern(R"((\w*)\1\1)");
+    if (std::regex_match(password, consecutivePattern)) {
         return "Weak";
     }
 

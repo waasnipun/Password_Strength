@@ -25,4 +25,4 @@ COPY . /PasswordStrength/PasswordStrength2
 WORKDIR /PasswordStrength/PasswordStrength2
 RUN ls -a
 
-CMD ["sh", "-c", "cifuzz run test:test --use-sandbox=false > /PasswordStrength/PasswordStrength2/fuzzing.log 2>&1 && cat /PasswordStrength/PasswordStrength2/fuzzing.log && cifuzz finding && cifuzz coverage test"]
+CMD ["sh", "-c", "cifuzz run test -v"]

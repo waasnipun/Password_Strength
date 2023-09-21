@@ -15,5 +15,5 @@ add_executable(${PROJECT_NAME} main.cpp )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE passchecker)
 
-add_fuzz_test(test1 test/test1.cpp)
-target_link_libraries(test1 PRIVATE passchecker)
+add_fuzz_test(test test/test.cpp)
+target_link_libraries(test PRIVATE passchecker)

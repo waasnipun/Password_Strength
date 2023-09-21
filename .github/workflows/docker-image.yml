@@ -11,7 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build the Docker image
-        run: |
-          docker build . --file Dockerfile --tag cifuzz-docker-image
+        run: docker build . --file Dockerfile --tag passcheckerimage
       - name: Run Docker Container
-        run: docker run cifuzz-docker-image
+        run: docker run passcheckerimage

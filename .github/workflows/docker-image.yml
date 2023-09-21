@@ -13,6 +13,19 @@ jobs:
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag passcheckerimage
       - run : docker images
-      - run : docker ps -a
-      - name: Run Docker Container
-        run: docker run passcheckerimage
+      - name: Run Docker Container and Get Container ID
+        id: container
+        run: |
+          container_id=$(docker run -d passcheckerimage)
+          echo "::set-output name=container_id::$container_id"
+      - name: Wait for Container to Finish
+        run: |
+          container_id="${{ steps.container.outputs.container_id }}"
+          while [ -n "$(docker ps -q --filter "id=$container_id")" ]; do
+            echo "Container is still running, waiting..."
+            sleep 10
+          done
+      - name: Copy logs from container
+        run: |
+          container_id="${{ steps.container.outputs.container_id }}"
+          docker cp $container_id:/PasswordStrength/fuzzing.log /Downloads

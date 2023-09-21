@@ -15,4 +15,4 @@ jobs:
       - run : docker images
       - run : docker ps -a
       - name: Run Docker Container
-        run: docker run -a passcheckerimage
+        run: docker run passcheckerimage

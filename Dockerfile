@@ -10,9 +10,12 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 RUN which clang
-RUN apt-get update && apt-get install -y cmake
 
-RUN cmake --version
+RUN curl -L https://github.com/bazelbuild/bazelisk/releases/latest/download/bazelisk-linux-amd64 -o /usr/local/bin/bazel && \
+    chmod +x /usr/local/bin/bazel
+
+RUN which bazel
+RUN bazel --version
 
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/CodeIntelligenceTesting/cifuzz/main/install.sh)"
 
@@ -22,4 +25,4 @@ COPY . /PasswordStrength
 
 RUN ls -a
 
-CMD ["sh", "-c", "cifuzz run test1 --use-sandbox=false > /PasswordStrength/fuzzing.log 2>&1 && cat /PasswordStrength/fuzzing.log && cifuzz finding && cifuzz coverage test1"]
+CMD ["sh", "-c", "cifuzz run test:test --use-sandbox=false > /PasswordStrength/fuzzing.log 2>&1 && cat /PasswordStrength/fuzzing.log && cifuzz finding && cifuzz coverage test1"]

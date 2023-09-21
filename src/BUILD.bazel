@@ -1,0 +1,6 @@
+cc_library(
+    name = "passchecker",
+    srcs = ["passchecker.cpp"],
+    hdrs = ["passchecker.h"],
+    visibility = ["//visibility:public"],
+)

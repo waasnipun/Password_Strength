@@ -29,3 +29,9 @@ jobs:
         run: |
           container_id="${{ steps.container.outputs.container_id }}"
           docker cp $container_id:/PasswordStrength/fuzzing.log /Downloads
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact-passchecker
+          path: passchecker.txt
+          retention-days: 5

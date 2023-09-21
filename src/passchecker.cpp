@@ -7,7 +7,7 @@
 
 using namespace std;
 
-string passchecker(string password) {
+string passchecker(string& password) {
 	
 	if (password.length() < 8) {
         return "Weak";

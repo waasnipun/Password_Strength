@@ -19,9 +19,10 @@ RUN bazel --version
 
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/CodeIntelligenceTesting/cifuzz/main/install.sh)"
 
-# Copying local directories and files instead of cloning from a repo
-COPY . /PasswordStrength
+RUN mkdir PasswordStrength2
+COPY . /PasswordStrength/PasswordStrength2
 
+WORKDIR /PasswordStrength/PasswordStrength2
 RUN ls -a
 
-CMD ["sh", "-c", "cifuzz run test:test --use-sandbox=false > /PasswordStrength/fuzzing.log 2>&1 && cat /PasswordStrength/fuzzing.log && cifuzz finding && cifuzz coverage test"]
+CMD ["sh", "-c", "cifuzz run test:test --use-sandbox=false > /PasswordStrength/PasswordStrength2/fuzzing.log 2>&1 && cat /PasswordStrength/PasswordStrength2/fuzzing.log && cifuzz finding && cifuzz coverage test"]

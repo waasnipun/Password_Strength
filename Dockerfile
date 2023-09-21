@@ -25,4 +25,4 @@ COPY . /PasswordStrength/PasswordStrength2
 WORKDIR /PasswordStrength/PasswordStrength2
 RUN ls -a
 
-CMD ["sh", "-c", "cifuzz run test -v"]
+CMD ["sh", "-c", "cifuzz run test -v --use-sandbox=false"]

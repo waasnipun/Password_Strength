@@ -5,7 +5,7 @@ FROM ubuntu:latest
 WORKDIR /PasswordStrength
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends python3 git curl clang llvm lcov default-jdk zip && \
+    apt-get install -y --no-install-recommends python3 git curl clang llvm lcov default-jdk zip cmake && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 

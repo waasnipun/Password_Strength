@@ -13,5 +13,6 @@ jobs:
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag passcheckerimage
       - run : docker images
+      - run : docker run -a
       - name: Run Docker Container
         run: docker run passcheckerimage

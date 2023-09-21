@@ -19,10 +19,10 @@ RUN bazel --version
 
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/CodeIntelligenceTesting/cifuzz/main/install.sh)"
 
-RUN mkdir PasswordStrength2
-COPY . /PasswordStrength/PasswordStrength2
+COPY . /PasswordStrength
 
-WORKDIR /PasswordStrength/PasswordStrength2
+WORKDIR /PasswordStrength
+
 RUN ls -a
 
 CMD ["sh", "-c", "cifuzz run test -v --use-sandbox=false"]

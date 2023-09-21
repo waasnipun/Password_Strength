@@ -28,10 +28,9 @@ jobs:
       - name: Copy logs from container
         run: |
           container_id="${{ steps.container.outputs.container_id }}"
-          docker cp $container_id:/PasswordStrength/fuzzing.log /Downloads
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v3
+          docker cp $container_id:/PasswordStrength/fuzzing.log ./logs/
+      - name: Create GitHub Artifact
+        uses: actions/upload-artifact@v2
         with:
-          name: my-artifact-passchecker
-          path: passchecker.txt
-          retention-days: 5
+          name: code-coverage-logs 
+          path: ./logs 

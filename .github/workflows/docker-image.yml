@@ -14,5 +14,8 @@ jobs:
         run: docker build . --file Dockerfile --tag passcheckerimage
       - run : docker images
       - run : docker ps -a
-      - name: Run Docker Container
-        run: docker run passcheckerimage
+      - name: Wait for Container to Finish
+        run: |
+          container_id=$(docker run -d passcheckerimage)
+          docker wait $container_id
+          docker logs $container_id

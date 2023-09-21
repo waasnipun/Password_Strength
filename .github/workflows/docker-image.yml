@@ -26,6 +26,11 @@ jobs:
             sleep 10
           done
       - run: docker ps -a
+      - run: mkdir logs
+      - name: Copy logs from container
+        run: |
+          container_id="${{ steps.container.outputs.container_id }}"
+          docker cp $container_id:/PasswordStrength/fuzzing.log ./logs
       - name: Create GitHub Artifact
         uses: actions/upload-artifact@v2
         with:
